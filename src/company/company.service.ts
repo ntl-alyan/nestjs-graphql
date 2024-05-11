@@ -35,7 +35,7 @@ export class CompanyService {
           }as unknown
         });
 
-        console.log("res");
+        console.log("resalyan");
 
         if(res.length>0)
         {
