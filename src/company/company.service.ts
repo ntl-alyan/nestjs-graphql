@@ -35,7 +35,7 @@ export class CompanyService {
           }as unknown
         });
 
-        console.log("resalyan");
+        console.log("alyan")
 
         if(res.length>0)
         {
@@ -78,7 +78,6 @@ export class CompanyService {
           }as unknown
         });
 
-        console.log(res)
         return res
        
       // }
@@ -105,7 +104,6 @@ export class CompanyService {
           }as unknown
         });
 
-        console.log(res)
         return res
        
       // }

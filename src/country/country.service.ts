@@ -39,7 +39,6 @@ export class CountryService {
       );
 
       if (cachedData) {
-        console.log(`Getting data from cache!`);
         return cachedData;
       }
 
