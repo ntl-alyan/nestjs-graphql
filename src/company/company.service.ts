@@ -35,7 +35,7 @@ export class CompanyService {
           }as unknown
         });
 
-        console.log("alyantest2121")
+        console.log("alyantest-jenkins")
 
         if(res.length>0)
         {
