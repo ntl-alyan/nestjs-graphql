@@ -35,6 +35,8 @@ export class CompanyService {
           }as unknown
         });
 
+        console.log(res)
+
         if(res.length>0)
         {
           return {
