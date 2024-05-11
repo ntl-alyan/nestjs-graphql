@@ -1,0 +1,102 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type State {
+  STATE_ID: Int!
+  COUNTRY_ID: String!
+  STATE_NAME: String!
+  STATE_CODE: String!
+  ABBREVIATION: String!
+  RECORD_STATUS: String!
+  OPERATOR: String!
+  DATETIME: DateTime!
+  ROW_STATUS: String!
+  MODIFIED_BY: String
+  MODIFIED_DATETIME: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Country {
+  COUNTRY_ID: Int!
+  COMPANY_ID: String
+  COUNTRY_NAME: String
+  COUNTRY_CODE: String
+  ABBREVIATION: String
+  RECORD_STATUS: String!
+  OPERATOR: String
+  DATETIME: DateTime!
+  ROW_STATUS: String!
+  MODIFIED_BY: String
+  MODIFIED_DATETIME: DateTime
+  states: [State!]!
+}
+
+type Company {
+  COMPANY_ID: Int!
+  COMPANY_NAME: String
+  COMPANY_CODE: String
+  ABBREVIATION: String
+  RECORD_STATUS: String
+  OPERATOR: String
+  DATETIME: DateTime!
+  ROW_STATUS: String!
+  MODIFIED_BY: String
+  MODIFIED_DATETIME: DateTime
+  countries: [Country!]!
+  companies: [Company!]!
+  countryData: [Country!]!
+}
+
+type ReturnType {
+  status: String!
+  httpStatus: Float!
+  message: String!
+  data: [String!]
+}
+
+type Query {
+  getAllCompany: [Company!]!
+  getAllCompanyCountries: [Company!]
+  getAllCountries: [Country!]!
+  getCountryById(id: Int!): Country
+}
+
+type Mutation {
+  createCompany(companyDto: CompanyDto!): ReturnType!
+  disableCompany(id: Float!, operatorDTO: OperatorDTO!): ReturnType!
+  enableCompany(id: Float!, operatorDTO: OperatorDTO!): ReturnType!
+  updateCompany(id: Float!, updateCompanyDto: UpdateCompanyDto!): ReturnType!
+  deleteCompany(id: Float!, operatorDTO: OperatorDTO!): ReturnType!
+}
+
+input CompanyDto {
+  COMPANY_ID: Float
+  COMPANY_NAME: String!
+  COMPANY_CODE: String!
+  ABBREVIATION: String!
+  RECORD_STATUS: String
+  OPERATOR: String!
+  DATETIME: DateTime
+  ROW_STATUS: String
+}
+
+input OperatorDTO {
+  MODIFIED_BY: String!
+}
+
+input UpdateCompanyDto {
+  COMPANY_NAME: String!
+  COMPANY_CODE: String!
+  ABBREVIATION: String!
+  MODIFIED_BY: String!
+}
+
+type Subscription {
+  companyDeleted: ReturnType!
+  companyCreated: ReturnType!
+}
